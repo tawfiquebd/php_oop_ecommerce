@@ -57,6 +57,7 @@
                         <?php  }} ?>
                         <!-- /.box-body -->
                         <div class="box-footer">
+                            <a href="viewcategory.php" type="submit" class="btn btn-info">Back</a>
                             <button name="update" type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>

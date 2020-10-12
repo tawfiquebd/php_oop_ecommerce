@@ -70,8 +70,17 @@
 			$query = "DELETE FROM tbl_categories WHERE id = '$categoryId'";
 			$result = $this->db->delete($query);
 			if($result){
-				$success = "<span class='success'>Category deleted successfully!</span>";
-				return $success;
+				
+				$affectedRow = $this->db->link->affected_rows;
+
+				if($affectedRow > 0){
+					$success = "<span class='success'>Category deleted successfully!</span>";
+					return $success;
+				}
+				else{
+					$error = "<span class='error'>Bad Request</span>";
+					return $error;
+				}
 			}
 			else{
 				$error = "<span class='error'>Category deleted failed!</span>";

@@ -66,8 +66,6 @@
                                         <td><a href="edit-category.php?edit_id=<?php echo $value['id']?>">Edit</a> | <a onclick="return confirm('Are you sure you want to Delete this Category?');" href="?delete_id=<?php echo $value['id']?>">Delete</a></td>
                                     </tr>
 
-                                </tbody>
-                                
                                 <?php } }
 
                                     else{
@@ -76,6 +74,7 @@
                                     }
 
                                 ?>
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.box-body -->

@@ -76,6 +76,21 @@
             <li><a href="viewcategory.php"><i class="fa fa-square"></i> View Categories</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-tags"></i>
+            <span>Brand Option</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="addbrand.php"><i class="fa fa-plus"></i> Add Brand</a></li>
+            <li><a href="viewbrands.php"><i class="fa fa-square"></i> View Brands</a></li>
+          </ul>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pencil-square-o"></i>
