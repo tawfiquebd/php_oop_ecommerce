@@ -2,7 +2,7 @@
 	<div class="pull-right hidden-xs">
 		<b>Template by AdminLTE v2.4</b>
 	</div>
-	<strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Blog site developed by <a href="https://facebook.com/tawfiquebd" target="_blank">Md Tawfique Hossain</a></strong>
+	<strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Ecommerce site developed by <a href="https://facebook.com/tawfiquebd" target="_blank">Md Tawfique Hossain</a></strong>
 	</footer>
 
 <!-- jQuery 3 -->

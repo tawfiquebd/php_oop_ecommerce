@@ -26,9 +26,9 @@
 			else{
 				// Check if category exist or not
 				$query = "SELECT * FROM tbl_categories WHERE name = '$categoryName' ";
-				$numRow = $this->db->select($query);
+				$result = $this->db->select($query);
 
-				if($numRow > 0){
+				if($result){
 					$error = "<span class='error'>Category already exist!</span>" ;
 					return $error;
 				}
@@ -45,12 +45,83 @@
 						return $error;
 					}
 				}
-					
 				
+			}
+		}
+
+
+		public function categoryView(){
+			
+			$query = "SELECT * FROM tbl_categories ORDER BY id DESC ";
+			$result = $this->db->select($query);
+			if($result && $result->num_rows > 0){
+				return $result;
+			}
+			else{
+				return $result;
+
 			}
 
 		}
 
 
+		public function categoryDelete($categoryId){
+			
+			$query = "DELETE FROM tbl_categories WHERE id = '$categoryId'";
+			$result = $this->db->delete($query);
+			if($result){
+				$success = "<span class='success'>Category deleted successfully!</span>";
+				return $success;
+			}
+			else{
+				$error = "<span class='error'>Category deleted failed!</span>";
+				return $error;
 
-	}
+			}
+
+		}
+
+
+		public function viewCategoryById($cat_id){
+			$query = "SELECT * FROM tbl_categories WHERE id = '$cat_id'";
+			$result = $this->db->select($query);
+			if($result){
+				return $result;
+			}
+			else{
+
+				return false;
+			}
+
+
+		}
+
+
+		public function editCategoryById($cat_id, $cat_name){
+
+			if(empty($cat_name)){
+				$error = "<span class='error'>Category name can't be empty!</span>";
+				return $error;
+			}
+			else{
+				$cat_name = $this->fmt->validation($cat_name);
+				$cat_name = $this->db->link->real_escape_string($cat_name);
+
+				$query = "UPDATE tbl_categories SET name = '$cat_name' WHERE id = '$cat_id' ";
+				$result = $this->db->update($query);
+
+				if($result){
+					$success = "<span class='success'>Category name updated successfully!</span>";
+					return $success;
+				}
+				else{
+					$error = "<span class='error'>Category name update failed!</span>";
+					return $error;
+				}
+
+			}
+
+		}
+
+
+}
