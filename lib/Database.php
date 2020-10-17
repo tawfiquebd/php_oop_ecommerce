@@ -1,6 +1,11 @@
 <?php
 
-include_once '../config/config.php';
+	$filepath = realpath(dirname(__FILE__));
+	include_once ($filepath . '/../config/config.php');
+
+?>
+
+<?php
 
 class Database{
 	// property

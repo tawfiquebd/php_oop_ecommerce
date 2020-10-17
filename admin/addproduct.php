@@ -92,7 +92,7 @@
                                 <select required="" name="type" id="type" class="form-control">
                                     <option value="">-- Select Type --</option>
                                     <option value="1">Featured</option>
-                                    <option value="2">Non-Featured</option>
+                                    <option value="2">General</option>
 
                                  </select>
                             </div>

@@ -1,3 +1,21 @@
+<?php
+    include_once 'lib/Session.php';
+    Session::init();
+
+    include_once 'lib/Database.php';
+    include_once 'helpers/Format.php';
+
+    spl_autoload_register(function($class){
+        include_once "classes/".$class.".php";
+    });
+
+    $dbObj = new Database();
+    $fmtObj = new Format();
+    $pdObj = new Product();
+    $cartObj = new Cart();
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>

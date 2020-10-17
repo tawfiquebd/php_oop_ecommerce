@@ -1,6 +1,7 @@
 <?php
-	include_once '../lib/Database.php';
-	include_once '../helpers/Format.php';
+	$filepath = realpath(dirname(__FILE__));
+	include_once ($filepath . '/../lib/Database.php');
+	include_once ($filepath . '/../helpers/Format.php');
 ?>
 
 <?php
@@ -63,7 +64,7 @@ class Product{
 		}
 		else{
 			move_uploaded_file($file_temp, $upload_path);
-	        $query = "INSERT INTO tbl_products(name, cat_id, brand_id, body, price, image, type, status) VALUES('$name', '$category', '$brand','$body','$price','$upload_path', '$type', '$status') " ;
+	        $query = "INSERT INTO tbl_products(product_name, cat_id, brand_id, body, price, image, type, status) VALUES('$name', '$category', '$brand','$body','$price','$upload_path', '$type', '$status') " ;
 	        $inserted_rows = $this->db->create($query);
 	        if ($inserted_rows) {
 	         echo "<span class='success'>Product Created Successfully!</span>";

@@ -126,11 +126,11 @@
                                     <option value="">-- Select Type --</option>
                                     <?php if($value['type'] == 1){ ?>
                                     <option selected="selected" value="1">Featured</option>
-                                    <option value="2">Non-Featured</option>
+                                    <option value="2">General</option>
                                     <?php } ?> 
 
                                     <?php if($value['type'] == 2){ ?>
-                                    <option selected="selected" value="2">Non-Featured</option>
+                                    <option selected="selected" value="2">General</option>
                                     <option value="1">Featured</option>
                                     <?php } ?> 
 
