@@ -43,7 +43,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="addpage.php"><i class="fa fa-circle-o"></i> Add New Page</a></li>
-            <li><a href="page.php?pageid="><i class="fa fa-circle-o"></i></a></li>
+            <li><a href="page.php?pageid="><i class="fa fa-circle-o"></i>View Pages</a></li>
 
 
           </ul> 
@@ -94,14 +94,14 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pencil-square-o"></i>
-            <span>Post Option</span>
+            <span>Product Option</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="addpost.php"><i class="fa fa-plus"></i> Add Post</a></li>
-            <li><a href="viewpost.php"><i class="fa fa-square"></i> View Posts</a></li>
+            <li><a href="addproduct.php"><i class="fa fa-plus"></i> Add Product</a></li>
+            <li><a href="viewproducts.php"><i class="fa fa-square"></i> View Products</a></li>
           </ul>
         </li>
 

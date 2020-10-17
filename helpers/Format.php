@@ -14,8 +14,15 @@ class Format{
 		$text = $text. " " ;
 		$text = substr($text, 0, $limit);
 		$text = substr($text, 0, strrpos($text, ' '));
-		$text = $text."..... " ;
-		return $text;
+		if(strlen($text) > 45){
+			$text = $text."..... " ;
+			return $text;
+		}
+		else{
+			return $text;
+		}
+		
+		
 	}
 
 	// validation
