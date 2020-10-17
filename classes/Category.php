@@ -25,7 +25,7 @@
 			}
 			else{
 				// Check if category exist or not
-				$query = "SELECT * FROM tbl_categories WHERE name = '$categoryName' ";
+				$query = "SELECT * FROM tbl_categories WHERE category_name = '$categoryName' ";
 				$result = $this->db->select($query);
 
 				if($result){
@@ -33,7 +33,7 @@
 					return $error;
 				}
 				else{
-					$query = "INSERT INTO tbl_categories(name) VALUES('$categoryName') ";
+					$query = "INSERT INTO tbl_categories(category_name) VALUES('$categoryName') ";
 					$insert = $this->db->create($query);
 
 					if($insert){
@@ -116,7 +116,7 @@
 				$cat_name = $this->fmt->validation($cat_name);
 				$cat_name = $this->db->link->real_escape_string($cat_name);
 
-				$query = "UPDATE tbl_categories SET name = '$cat_name' WHERE id = '$cat_id' ";
+				$query = "UPDATE tbl_categories SET category_name = '$cat_name' WHERE id = '$cat_id' ";
 				$result = $this->db->update($query);
 
 				if($result){

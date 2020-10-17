@@ -27,7 +27,7 @@ class Brand {
 			return $error;
 		}
 		else{
-			$checkIfExist = "SELECT * FROM tbl_brands WHERE name = '$brand_name' ";
+			$checkIfExist = "SELECT * FROM tbl_brands WHERE brand_name = '$brand_name' ";
 			$getRow = $this->db->select($checkIfExist);
 
 			if($getRow){
@@ -35,7 +35,7 @@ class Brand {
 				return $error;
 			}
 			else{
-				$query = "INSERT INTO tbl_brands(name) VALUES('$brand_name') ";
+				$query = "INSERT INTO tbl_brands(brand_name) VALUES('$brand_name') ";
 				$insert = $this->db->create($query);
 
 				if($insert){
@@ -112,7 +112,7 @@ class Brand {
 				$brandName = $this->fmt->validation($brandName);
 				$brandName = $this->db->link->real_escape_string($brandName);
 				$current_date = date('d-m-Y H:i:s');
-				$query = "UPDATE tbl_brands SET name = '$brandName', update_date = '$current_date' WHERE id = '$brandId' ";
+				$query = "UPDATE tbl_brands SET brand_name = '$brandName', update_date = '$current_date' WHERE id = '$brandId' ";
 				$result = $this->db->update($query);
 
 				if($result){

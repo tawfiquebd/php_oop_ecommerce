@@ -62,8 +62,8 @@
                                 while ($value = $categories->fetch_assoc() ) { ?>
                                     <tr>
                                         <td><?php echo $i++; ?></td>
-                                        <td><?php echo $value['name'] ; ?></td>
-                                        <td><a href="edit-category.php?edit_id=<?php echo $value['id']?>">Edit</a> | <a onclick="return confirm('Are you sure you want to Delete this Category?');" href="?delete_id=<?php echo $value['id']?>">Delete</a></td>
+                                        <td><?php echo $value['category_name'] ; ?></td>
+                                        <td><a href="edit-category.php?edit_id=<?php echo $value['id']?>">Edit</a> | <a class="text-danger" onclick="return confirm('Are you sure you want to Delete this Category?');" href="?delete_id=<?php echo $value['id']?>">Delete</a></td>
                                     </tr>
 
                                 <?php } }

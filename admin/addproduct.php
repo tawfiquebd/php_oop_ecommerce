@@ -52,7 +52,7 @@
                                         if($getAll){
                                             while($result = $getAll->fetch_assoc()){ ?>
 
-                                    <option value="<?php echo $result['id'];?>"><?php echo $result['name'];?></option>
+                                    <option value="<?php echo $result['id'];?>"><?php echo $result['category_name'];?></option>
                                     <?php } }  ?> 
                                  </select>
                             </div>
@@ -67,7 +67,7 @@
                                         if($getAll){
                                             while($value = $getAll->fetch_assoc()){ ?>
 
-                                    <option value="<?php echo $value['id'];?>"><?php echo $value['name'];?></option>
+                                    <option value="<?php echo $value['id'];?>"><?php echo $value['brand_name'];?></option>
                                     <?php } }  ?> 
                                  </select>
                             </div>

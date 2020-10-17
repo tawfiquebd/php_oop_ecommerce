@@ -50,7 +50,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="category">Category Name</label>
-                                <input type="text" name="name" class="form-control" id="category" value="<?php echo $value['name']; ?>">
+                                <input type="text" name="name" class="form-control" id="category" value="<?php echo $value['category_name']; ?>">
                             </div>
                         </div>
 

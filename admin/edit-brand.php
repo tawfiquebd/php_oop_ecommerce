@@ -52,7 +52,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="brand">Brand Name</label>
-                                <input type="text" name="name" class="form-control" id="brand" value="<?php echo $value['name']; ?>">
+                                <input type="text" name="name" class="form-control" id="brand" value="<?php echo $value['brand_name']; ?>">
                             </div>
                         </div>
 
