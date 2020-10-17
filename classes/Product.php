@@ -229,6 +229,56 @@ class Product{
 	}
 
 
+	// Get featured product for front view
+
+	public function getFeaturedProduct(){
+		$query = "SELECT * FROM tbl_products WHERE type = '1' AND status = '1' ORDER BY id DESC LIMIT 4 ";
+		$get_products = $this->db->select($query);
+		if($get_products){
+			return $get_products;
+		}
+		else{
+			return false;
+		}
+	}
+
+
+	// Get new product for front view
+
+	public function getNewProduct(){
+		$query = "SELECT * FROM tbl_products WHERE type = '2' AND status = '1' ORDER BY id DESC LIMIT 4 ";
+		$get_products = $this->db->select($query);
+		if($get_products){
+			return $get_products;
+		}
+		else{
+			return false;
+		}
+	}
+
+
+	// Get single product by id front view
+
+	public function getProductById($id){
+		$query = "SELECT tbl_products.*, tbl_categories.category_name, tbl_brands.brand_name
+				  FROM tbl_products
+				  INNER JOIN tbl_categories
+				  ON tbl_products.cat_id = tbl_categories.id
+				  INNER JOIN tbl_brands
+				  ON tbl_products.brand_id = tbl_brands.id 
+				  WHERE tbl_products.id = '$id' 
+		 		  ORDER BY tbl_products.id DESC";
+
+	  	$result = $this->db->select($query);
+	  	if($result){
+	  		return $result;
+	  	}
+	  	else{
+	  		return false;
+	  	}
+	}
+
+
 }
 
 ?>

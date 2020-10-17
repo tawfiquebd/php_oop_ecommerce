@@ -10,8 +10,8 @@
     });
 
     $dbObj = new Database();
-    $fmtObj = new Format();
-    $pdObj = new Product();
+    $formatObj = new Format();
+    $productObj = new Product();
     $cartObj = new Cart();
 
 ?>
