@@ -28,70 +28,83 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product-thumbnail">products</th>
-                                            <th class="product-name">name of products</th>
+                                            <th class="product-thumbnail">SL.</th>
+                                            <th class="product-thumbnail">Product Name</th>
+                                            <th class="product-name">Product Image</th>
                                             <th class="product-price">Price</th>
                                             <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
+                                            <th class="product-subtotal">Total Price</th>
                                             <th class="product-remove">Remove</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <!-- Get product from cart -->
+                                    <?php
+                                        $getCartData = $cartObj->getCartData();
+                                        if($getCartData){
+                                            $i = 1;
+                                            $grandTotal = 0;
+                                            while ($value = $getCartData->fetch_assoc()) { ?>
+                                                
                                         <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/1.jpg" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                                <ul  class="pro__prize">
-                                                    <li class="old__prize">$82.5</li>
-                                                    <li>$75.2</li>
-                                                </ul>
+                                            <td class="product-price"><span class="amount"><?php echo $i++ ;?></span></td>
+                                            <td class="product-name"><a href="#"><?php echo $value['productName'] ;?></a></td>
+                                            <td class="product-thumbnail"><a href="#"><img width="100" height="100" src="admin/<?php echo $value['image'] ;?>" alt="product img" /></a></td>
+                                            <td class="product-price"><span class="amount">$ <?php echo $value['price'] ;?></span></td>
+                                            <td class="product-quantity">
+                                                <form action="" method="POST">
+                                                    <input required="" type="number" name="quantity" min="1" value="<?php echo $value['quantity'] ;?>" />
+                                                    <button type="submit" name="update" class="btn btn-warning">Update</button>
+                                                </form>
                                             </td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£165.00</td>
+                                            <td class="product-subtotal">$ 
+                                                <?php 
+                                                    $total_price = $value['quantity'] * $value['price'];
+                                                    echo $total_price ;
+                                                    $grandTotal += $total_price;
+                                                ?>
+                                                
+                                            </td>
                                             <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
                                         </tr>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/2.jpg" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                                <ul  class="pro__prize">
-                                                    <li class="old__prize">$82.5</li>
-                                                    <li>$75.2</li>
-                                                </ul>
-                                            </td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/3.jpg" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                                <ul  class="pro__prize">
-                                                    <li class="old__prize">$82.5</li>
-                                                    <li>$75.2</li>
-                                                </ul>
-                                            </td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/4.jpg" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                                <ul  class="pro__prize">
-                                                    <li class="old__prize">$82.5</li>
-                                                    <li>$75.2</li>
-                                                </ul>
-                                            </td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
-                                        </tr>
+
+                                        <?php } } ?>
+
                                     </tbody>
                                 </table>
                             </div>
+                                                                     
+                            <div class="row">
+                                <div class="col-md-4 col-xs-4 col-xs-offset-8">
+                                    <table class="table table-content table-bordered">
+                                        <tbody>   
+                                            <tr>
+                                                <th><h5>Sub Total </h5></th>
+                                                <td class="product-price"><h5 align="center">Tk. <?php echo $grandTotal; ?></h5></td>
+                                            </tr>
+                                            <tr>
+                                                <th><h5>VAT Total </h5></th>
+                                                <td class="product-price"><h5 align="center"> 5% </h5></td>
+                                            </tr>
+                                            <tr>
+                                                <th><h5>Grand Total </h5></th>
+                                                <td class="product-price">
+                                                    <h5 align="center">Tk. 
+                                                    <?php
+                                                        $vat = 5;
+                                                        $grandTotal = $grandTotal + ($grandTotal * $vat / 100);
+                                                        echo $grandTotal;
+                                                    ?>
+                                                    </h5>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="buttons-cart--inner">
@@ -99,7 +112,6 @@
                                             <a href="#">Continue Shopping</a>
                                         </div>
                                         <div class="buttons-cart checkout--btn">
-                                            <a href="#">update</a>
                                             <a href="#">checkout</a>
                                         </div>
                                     </div>

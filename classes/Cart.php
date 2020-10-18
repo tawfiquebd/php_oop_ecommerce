@@ -52,6 +52,16 @@ class Cart{
 	}
 
 
+	// Get all cart data 
+
+	public function getCartData(){
+		$sessionId = session_id();
+		$selectQuery = "SELECT * FROM tbl_carts WHERE sessionId = '$sessionId' ";
+		$getProducts = $this->db->select($selectQuery);
+		return $getProducts;
+	}
+
+
 
 }
 
