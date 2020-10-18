@@ -68,7 +68,8 @@
 
 		public function categoryDelete($categoryId){
 			
-			$query = "DELETE FROM tbl_categories WHERE id = '$categoryId'";
+			$id = $this->db->link->real_escape_string($categoryId);
+			$query = "DELETE FROM tbl_categories WHERE id = '$id'";
 			$result = $this->db->delete($query);
 			if($result){
 				
@@ -93,7 +94,9 @@
 
 
 		public function viewCategoryById($cat_id){
-			$query = "SELECT * FROM tbl_categories WHERE id = '$cat_id'";
+
+			$id = $this->db->link->real_escape_string($cat_id);
+			$query = "SELECT * FROM tbl_categories WHERE id = '$id'";
 			$result = $this->db->select($query);
 			if($result){
 				return $result;
@@ -116,8 +119,9 @@
 			else{
 				$cat_name = $this->fmt->validation($cat_name);
 				$cat_name = $this->db->link->real_escape_string($cat_name);
+				$id = $this->db->link->real_escape_string($cat_id);
 
-				$query = "UPDATE tbl_categories SET category_name = '$cat_name' WHERE id = '$cat_id' ";
+				$query = "UPDATE tbl_categories SET category_name = '$cat_name' WHERE id = '$id' ";
 				$result = $this->db->update($query);
 
 				if($result){

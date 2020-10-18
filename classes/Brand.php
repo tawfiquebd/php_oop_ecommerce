@@ -66,7 +66,9 @@ class Brand {
 
 
 	public function brandDelete($brandId){
-		$query = "DELETE FROM tbl_brands WHERE id = '$brandId' ";
+		$id = $this->db->link->real_escape_string($brandId);
+
+		$query = "DELETE FROM tbl_brands WHERE id = '$id' ";
 		$result = $this->db->delete($query);
 
 		if($result){
@@ -89,7 +91,9 @@ class Brand {
 	}
 
 	public function viewBrandById($cat_id){
-		$query = "SELECT * FROM tbl_brands WHERE id = '$cat_id'";
+		$id = $this->db->link->real_escape_string($cat_id);
+
+		$query = "SELECT * FROM tbl_brands WHERE id = '$id'";
 		$result = $this->db->select($query);
 		if($result){
 			return $result;
@@ -112,8 +116,9 @@ class Brand {
 			else{
 				$brandName = $this->fmt->validation($brandName);
 				$brandName = $this->db->link->real_escape_string($brandName);
+				$id 	   = $this->db->link->real_escape_string($brandId);
 				$current_date = date('d-m-Y H:i:s');
-				$query = "UPDATE tbl_brands SET brand_name = '$brandName', update_date = '$current_date' WHERE id = '$brandId' ";
+				$query = "UPDATE tbl_brands SET brand_name = '$brandName', update_date = '$current_date' WHERE id = '$id' ";
 				$result = $this->db->update($query);
 
 				if($result){

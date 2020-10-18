@@ -105,7 +105,9 @@ class Product{
 	// Get single product by id
 
 	public function getProductId($productId){
-		$query = "SELECT * FROM tbl_products WHERE id = '$productId' ";
+		$id = $this->db->link->real_escape_string($productId);
+
+		$query = "SELECT * FROM tbl_products WHERE id = '$id' ";
 		$result = $this->db->select($query);
 		if($result){
 			return $result;
@@ -128,6 +130,8 @@ class Product{
 		$price = $this->fmt->validation($data['price']);
 		$type = $this->fmt->validation($data['type']);
 		$status = $this->fmt->validation($data['status']);
+	
+		$id = $this->db->link->real_escape_string($id);
 
 		$name = $this->db->link->real_escape_string($data['name']);
 		$category = $this->db->link->real_escape_string($data['category']);
@@ -203,6 +207,8 @@ class Product{
 	// Delete product by Id
 
 	public function deleteProductById($id){
+		$id = $this->db->link->real_escape_string($id);	
+
 		$getQuery = "SELECT * FROM tbl_products WHERE id = '$id' ";
 		$getRow = $this->db->select($getQuery);
 		if($getRow){
@@ -260,6 +266,8 @@ class Product{
 	// Get single product by id front view
 
 	public function getProductById($id){
+		$id = $this->db->link->real_escape_string($id);
+		
 		$query = "SELECT tbl_products.*, tbl_categories.category_name, tbl_brands.brand_name
 				  FROM tbl_products
 				  INNER JOIN tbl_categories
