@@ -7,6 +7,13 @@
     else{
         $product_id = $_GET['product_id'];
     }
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $quantity = $_POST['quantity'];
+        $addCart = $cartObj->addToCart($quantity, $product_id);
+    }
+
+
 ?>
 
         <!-- End Offset Wrapper -->
@@ -84,6 +91,21 @@
                                             <li><a href="#"><?php echo $value['brand_name']; ?></a></li>
                                         </ul>
                                     </div>
+                                    <div class="sin__desc align--left">
+                                        <div class="cart">
+                                            <form method="POST" action="">
+                                                <p><span>Quantity: </span></p>
+                                                
+                                                <input required="" type="number" class="form-control" value="1" min="1" name="quantity">
+                                                <br>
+                                            
+                                                <input class="btn btn-primary" type="submit" value="Buy Now" name="buy"/>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>                                        
+                                </div>
+                            </div>
                                     
                                     </div>
                                 </div>
