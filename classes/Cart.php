@@ -91,6 +91,29 @@ class Cart{
 	}
 
 
+	// Delete product from Cart
+	public function deleteProductFromCart($del_id){
+		$del_id = $this->fmt->validation($del_id);
+		$del_id = $this->db->link->real_escape_string($del_id);
+		$query = "DELETE FROM tbl_carts WHERE cartId = '$del_id' ";
+		$delete_result = $this->db->delete($query);
+		if($delete_result){
+			$affected_row = $this->db->link->affected_rows;
+			if($affected_row){
+				$success = "<span class='success'>Product Deleted From Cart Successfully!</span>";
+				return $success;
+			}
+			else{
+				$error = "<span class='error'>Bad Request!</span>";
+				return $error;
+			}
+			
+		}
+		else{
+			$error = "<span class='error'>Product Delete From Cart Failed!</span>";
+			return $error;
+		}
+	}
 
 
 

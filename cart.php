@@ -1,12 +1,28 @@
 <?php include_once 'inc/header.php' ;?>
 
 <?php
+    // delete product from cart
+    if(isset($_GET['delete_product']) ){
+        $del_id = $_GET['delete_product'];
+        $deleted_product = $cartObj->deleteProductFromCart($del_id);        
+    }
+    
+?>
+
+<?php
+    // update product quantity
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $cart_id = $_POST['cartId'];
         $quantity = $_POST['quantity'];
-        $updateCart = $cartObj->updateCartData($cart_id, $quantity);
+        if($quantity <= 0){
+            $deleted_product = $cartObj->deleteProductFromCart($cart_id);    
+        }
+        else{
+            $updateCart = $cartObj->updateCartData($cart_id, $quantity);
+        }
     }
 ?>
+
 
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
@@ -31,7 +47,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <?php if(isset($updateCart)){echo $updateCart;}?>        
+                        <?php if(isset($updateCart)){echo $updateCart;}?>
+                        <?php if(isset($deleted_product)){echo $deleted_product;}?>
                             <div class="table-content table-responsive">
                                 <table>
                                     <thead>
@@ -62,7 +79,7 @@
                                             <td class="product-quantity">
                                                 <form action="cart.php" method="POST">
                                                     <input type="hidden" name="cartId" value="<?php echo $value['cartId'] ;?>" />
-                                                    <input required="" type="number" name="quantity" min="1" value="<?php echo $value['quantity'] ;?>" />
+                                                    <input required="" type="number" name="quantity"  value="<?php echo $value['quantity'] ;?>" />
                                                     <button type="submit" name="update" class="btn btn-warning">Update</button>
                                                 </form>
                                             </td>
@@ -74,7 +91,7 @@
                                                 ?>
                                                 
                                             </td>
-                                            <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
+                                            <td class="product-remove"><a onclick="return confirm('Are You Sure to Delete this Product From Cart?')" href="?delete_product=<?php echo $value['cartId']?>"><i class="icon-trash icons"></i></a></td>
                                         </tr>
 
                                         <?php } } ?>
