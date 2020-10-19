@@ -6,7 +6,7 @@
         $del_id = $_GET['delete_product'];
         $deleted_product = $cartObj->deleteProductFromCart($del_id);        
     }
-    
+
 ?>
 
 <?php
@@ -50,6 +50,10 @@
                         <?php if(isset($updateCart)){echo $updateCart;}?>
                         <?php if(isset($deleted_product)){echo $deleted_product;}?>
                             <div class="table-content table-responsive">
+                    <!-- Get product from cart -->
+                        <?php
+                            $getCartData = $cartObj->getCartData();
+                            if($getCartData){ ?>
                                 <table>
                                     <thead>
                                         <tr>
@@ -63,14 +67,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <!-- Get product from cart -->
-                                    <?php
-                                        $getCartData = $cartObj->getCartData();
-                                        if($getCartData){
-                                            $i = 1;
-                                            $grandTotal = 0;
-                                            while ($value = $getCartData->fetch_assoc()) { ?>
-                                                
+                                <?php        
+                                    $i = 1;
+                                    $totalQty = 0;
+                                    $grandTotal = 0;
+                                    while ($value = $getCartData->fetch_assoc()) { ?>
                                         <tr>
                                             <td class="product-price"><span class="amount"><?php echo $i++ ;?></span></td>
                                             <td class="product-name"><a href="#"><?php echo $value['productName'] ;?></a></td>
@@ -85,16 +86,23 @@
                                             </td>
                                             <td class="product-subtotal">$ 
                                                 <?php 
+
+                                                    $totalQty = $totalQty + $value['quantity'];
+                                                    Session::set("getQty",$totalQty);
+
                                                     $total_price = $value['quantity'] * $value['price'];
                                                     echo $total_price ;
-                                                    $grandTotal += $total_price;
+                                                    $grandTotal += $total_price;                                                 
                                                 ?>
                                                 
                                             </td>
                                             <td class="product-remove"><a onclick="return confirm('Are You Sure to Delete this Product From Cart?')" href="?delete_product=<?php echo $value['cartId']?>"><i class="icon-trash icons"></i></a></td>
                                         </tr>
+                                        <?php 
+                                        } 
+                                            
 
-                                        <?php } } ?>
+                                    ?>
 
                                     </tbody>
                                 </table>
@@ -103,6 +111,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-xs-4 col-xs-offset-8">
                                     <table class="table table-content table-bordered">
+
                                         <tbody>   
                                             <tr>
                                                 <th><h5>Sub Total </h5></th>
@@ -127,6 +136,8 @@
 
                                         </tbody>
                                     </table>
+
+
                                 </div>
                             </div>
 
@@ -135,14 +146,31 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="buttons-cart--inner">
                                         <div class="buttons-cart">
-                                            <a href="#">Continue Shopping</a>
+                                            <a href="index.php">Continue Shopping</a>
                                         </div>
                                         <div class="buttons-cart checkout--btn">
                                             <a href="#">checkout</a>
                                         </div>
                                     </div>
+                                     <?php 
+                                        }
+                                            else{
+                                                echo "<h2 align='center'>Cart is Empty!</h2>";
+                                                echo "
+                                                <div class='text-center'>
+                                                    <div class='buttons-cart'>
+                                                        <br>
+                                                        <a align='center' href='index.php'>Continue Shopping</a>
+                                                    </div>
+                                                </div>
+
+                                                ";
+                                            }
+                                            ?>
                                 </div>
                             </div>
+                            
+
                     </div>
                 </div>
             </div>

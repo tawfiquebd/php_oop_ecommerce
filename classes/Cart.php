@@ -116,6 +116,16 @@ class Cart{
 	}
 
 
+	// Get cart info for header
+	public function getCartInfo(){
+		$sessionId = session_id();
+		$selectQuery = "SELECT * FROM tbl_carts WHERE sessionId = '$sessionId' ";
+		$getCartInfo = $this->db->select($selectQuery);
+		return $getCartInfo;
+	}
+
+
+
 
 }
 
