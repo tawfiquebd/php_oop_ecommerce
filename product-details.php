@@ -13,10 +13,7 @@
         $addCart = $cartObj->addToCart($quantity, $product_id);
     }
 
-
 ?>
-
-        <!-- End Offset Wrapper -->
         <!-- Start Bradcaump area -->
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
@@ -101,7 +98,12 @@
                                             
                                                 <input class="btn btn-primary" type="submit" value="Buy Now" name="buy"/>
                                                 
-                                            </form>
+                                            </form> <br>
+                                            <?php
+                                                if(isset($addCart)){
+                                                    echo $addCart;
+                                                }
+                                            ?>
                                         </div>
                                     </div>                                        
                                 </div>
