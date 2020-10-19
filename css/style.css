@@ -3566,24 +3566,24 @@ ul.htc__instagram__posts.owl-carousel li img {
 
 
 .success {
-    color: green;
+    color: white;
     font-weight: bold;
-    /*margin: 10px 0;
+    margin: 10px 0;
     display: block;
     background: green;
     padding: 10px 20px;
     word-spacing: 2px;
-    letter-spacing: 1px;*/
+    letter-spacing: 1px;
 }
 
 .error {
-    color: red;
+    color: black;
     font-weight: bold;
-    /*margin: 10px 0;
+    margin: 10px 0;
     display: block;
     background: red;
     padding: 10px 20px;
     letter-spacing: 1px;
-    word-spacing: 2px;*/
+    word-spacing: 2px;
 }
 

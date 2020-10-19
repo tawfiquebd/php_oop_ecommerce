@@ -1,5 +1,13 @@
 <?php include_once 'inc/header.php' ;?>
 
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $cart_id = $_POST['cartId'];
+        $quantity = $_POST['quantity'];
+        $updateCart = $cartObj->updateCartData($cart_id, $quantity);
+    }
+?>
+
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
@@ -23,7 +31,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <form action="#">               
+                        <?php if(isset($updateCart)){echo $updateCart;}?>        
                             <div class="table-content table-responsive">
                                 <table>
                                     <thead>
@@ -52,7 +60,8 @@
                                             <td class="product-thumbnail"><a href="#"><img width="100" height="100" src="admin/<?php echo $value['image'] ;?>" alt="product img" /></a></td>
                                             <td class="product-price"><span class="amount">$ <?php echo $value['price'] ;?></span></td>
                                             <td class="product-quantity">
-                                                <form action="" method="POST">
+                                                <form action="cart.php" method="POST">
+                                                    <input type="hidden" name="cartId" value="<?php echo $value['cartId'] ;?>" />
                                                     <input required="" type="number" name="quantity" min="1" value="<?php echo $value['quantity'] ;?>" />
                                                     <button type="submit" name="update" class="btn btn-warning">Update</button>
                                                 </form>
@@ -117,7 +126,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </form> 
                     </div>
                 </div>
             </div>

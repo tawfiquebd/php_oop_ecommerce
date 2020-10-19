@@ -57,19 +57,40 @@ class Cart{
 		        }
 		}
 
-		
-
 	}
 
 
 	// Get all cart data 
-
 	public function getCartData(){
 		$sessionId = session_id();
 		$selectQuery = "SELECT * FROM tbl_carts WHERE sessionId = '$sessionId' ";
 		$getProducts = $this->db->select($selectQuery);
 		return $getProducts;
 	}
+
+
+	// Cart quantity update 
+	public function updateCartData($cartId, $quantity){
+		$cartId   = $this->fmt->validation($cartId);
+		$quantity = $this->fmt->validation($quantity);
+
+		$cartId   = $this->db->link->real_escape_string($cartId);
+		$quantity = $this->db->link->real_escape_string($quantity);
+
+		$query = "UPDATE tbl_carts SET quantity = '$quantity' WHERE cartId = '$cartId' ";
+		$update_row = $this->db->update($query);
+		if($update_row){
+			$success = "<span class='success'>Product quantity updated successful</span>";
+			return $success;
+		}
+		else{
+			$error = "<span class='error'>Product quantity update failed</span>";
+			return $error;
+		}
+
+	}
+
+
 
 
 
