@@ -138,4 +138,16 @@
 		}
 
 
+		public function getProductCategory(){
+			$query = "SELECT * FROM tbl_categories ORDER BY id DESC ";
+			$result = $this->db->select($query);
+			if($result && $result->num_rows > 0){
+				return $result;
+			}
+			else{
+				return $result;
+			}
+		}
+
+
 }

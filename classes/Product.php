@@ -287,6 +287,26 @@ class Product{
 	}
 
 
+
+	// Get product by category id
+
+	public function getProductByCategoryId($cat_id){
+		$cat_id = $this->fmt->validation($cat_id);	
+		$cat_id = $this->db->link->real_escape_string($cat_id);	
+
+		$query = "SELECT * FROM tbl_products WHERE cat_id = '$cat_id' ORDER BY id DESC ";
+		$result = $this->db->select($query);
+
+		if($result){
+			return $result;
+		}
+		else{
+			return false;
+		}
+
+	}
+
+
 }
 
 ?>

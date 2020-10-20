@@ -47,7 +47,7 @@
                         if($get_product){
                             while ($value = $get_product->fetch_assoc()) { ?>
 
-                        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                             <div class="htc__product__details__tab__content">
                                 <!-- Start Product Big Images -->
                                 <div class="product__big__images">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                              
-                        <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
+                        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 smt-40 xmt-40">
                             <div class="ht__product__dtl">
                                 <h2><?php echo $value['product_name']; ?></h2>
                                 <ul  class="pro__prize">
@@ -109,14 +109,31 @@
                                 </div>
                             </div>
                                     
-                                    </div>
-                                </div>
-                            </div>
-                            
                         </div>
+
+                        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">    
+                              <h5>Product Category</h5>
+                              <hr>
+                              <ul class="nav">
+                                <?php
+                                    $getCategory = $categoryObj->getProductCategory();
+                                    if($getCategory){
+                                        while($result = $getCategory->fetch_assoc()){ ?>
+
+                                <li><a href="category-product.php?category_product=<?php echo $result['id']; ?>"><?php echo $result['category_name']; ?></a></li>
+
+                                <?php
+                                        }
+                                    }
+                                ?>
+                              </ul>                               
+                        </div>
+
                     </div>
                 </div>
+                    
             </div>
+                   
             <!-- End Product Details Top -->
         </section>
         <!-- End Product Details Area -->
