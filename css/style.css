@@ -3587,3 +3587,11 @@ ul.htc__instagram__posts.owl-carousel li img {
     word-spacing: 2px;
 }
 
+.contact-box select {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border: 0 none;
+    color: #666666;
+    font-size: 16px;
+    height: 62px;
+    padding: 0 47px;
+}

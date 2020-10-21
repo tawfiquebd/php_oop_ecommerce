@@ -14,6 +14,7 @@
     $productObj = new Product();
     $cartObj = new Cart();
     $categoryObj = new Category();
+    $customerObj = new Customer();
 
 ?>
 
