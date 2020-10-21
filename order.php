@@ -4,8 +4,8 @@
 	<!-- Check if user logged in or not -->
         <?php
             $logger = Session::get("customerLogin");
-            if($logger == FALSE){
-                echo "<script>window.location = 'login.php' ;</script>";
+            if($logger == false){
+                echo "<script>window.location = 'login.php';</script>";
             }
         ?>
 

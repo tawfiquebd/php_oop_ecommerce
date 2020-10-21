@@ -95,7 +95,7 @@ class Customer{
 			$getResult = $this->db->select($query);
 			if($getResult){
 				$result = $getResult->fetch_assoc();
-				Session::set("customerLogin", TRUE);
+				Session::set("customerLogin", true);
 				Session::set("customerId", $result['id']);
 				Session::set("customerName", $result['name']);
 				Session::set("customerEmail", $result['email']);

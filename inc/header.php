@@ -18,6 +18,7 @@
 
 ?>
 
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -204,25 +205,34 @@
                                     <div class="header__search search search__open">
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>
-                                    <div class="header__account">
-                                    <?php
-                                        $logger = Session::get("customerLogin");
-                                        if($logger == FALSE){
-                                            echo "<script>window.location = 'order.php' ;</script>"; ?>
-                                        
-                                        <a title="Login" href="login.php"><i class="icon-login icons"></i></a>
 
-                                    <?php }else{ ?>
-                                    </div>
+                                    <!-- User log out process -->
+                                    <?php
+                                        if(isset($_GET['logout_id'])){
+                                            Session::destroy();
+                                        }
+                                    ?>
                                     
+                                <?php
+                                    $logChecker = Session::get("customerLogin");
+                                    if($logChecker == false) { ?>
+
+                                    <div class="header__account">
+                                        <a title="Login" href="login.php"><i class="icon-login icons"></i></a>
+                                    </div>
+
+                                <?php } else{ ?> 
+                                       
                                     <div class="header__account">
                                         <a title="Profile" href="profile.php"><i class="icon-user icons"></i></a>
                                     </div>
 
-                                    <div class="header__account">
-                                        <a title="Logout" href="logout.php"><i class="icon-logout icons"></i></a>
+                                     <div class="header__account">   
+                                        <a title="Logout" href="?logout_id=<?php echo Session::get('customerId');?>"><i class="icon-logout icons"></i></a>
                                     </div>
-                                    <?php } ?>
+
+                                <?php } ?>
+                                    
 
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="cart.php"><i class="icon-handbag icons"></i></a>

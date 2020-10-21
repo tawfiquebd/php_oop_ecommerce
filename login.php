@@ -3,11 +3,8 @@
         <!-- Check if user logged in or not -->
         <?php
             $logger = Session::get("customerLogin");
-            if($logger == TRUE){
+            if($logger == true){
                 echo "<script>window.location = 'order.php' ;</script>";
-            }
-            else{
-                echo "<script>window.location = 'login.php' ;</script>";
             }
         ?>
 

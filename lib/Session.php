@@ -42,7 +42,8 @@ class Session{
 
 	public static function destroy(){
 		session_destroy();
-		header("location:login.php");
+		echo "<script>window.location = 'login.php';</script>";
+		// header("location:login.php");
 	}
 	
 }
