@@ -1,7 +1,18 @@
 <?php include_once 'inc/header.php' ;?>
 
-        
-        <!-- End Bradcaump area -->
+        <!-- Check if user logged in or not -->
+        <?php
+            $logger = Session::get("customerLogin");
+            if($logger == TRUE){
+                echo "<script>window.location = 'order.php' ;</script>";
+            }
+            else{
+                echo "<script>window.location = 'login.php' ;</script>";
+            }
+        ?>
+
+
+
         <!-- Start Contact Area -->
         <section class="htc__contact__area ptb--100 bg__white">
             <div class="container">
