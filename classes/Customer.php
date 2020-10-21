@@ -70,6 +70,48 @@ class Customer{
 
 
 
+	// Customer login 
+
+	public function customerLogin($loginData){		
+		$email = $this->fmt->validation($loginData['email']);
+		$password = $this->fmt->validation($loginData['password']);
+
+		$name = $this->db->link->real_escape_string($loginData['email']);
+		$password = $this->db->link->real_escape_string($loginData['password']);
+
+		// echo "<pre>";
+		// print_r($email);
+		// print_r($password);
+		// // echo print_r($loginData['password']);
+		// echo "</pre>";
+		// exit();
+
+		if(empty($name) || empty($password) ){
+			$error = "<span class='error'> Fields must not be empty</span>";
+			return $error;
+		}
+		else{
+			$query = "SELECT * FROM tbl_customers WHERE email = '$email' AND password = '$password' ";
+			$getResult = $this->db->select($query);
+			if($getResult){
+				$result = $getResult->fetch_assoc();
+				Session::set("customerLogin", TRUE);
+				Session::set("customerId", $result['id']);
+				Session::set("customerName", $result['name']);
+				Session::set("customerEmail", $result['email']);
+				echo "<script>window.location = 'order.php' ;</script>";
+			}
+			else{
+				$error = "<span class='error'> Email or Password does not match! </span>";
+				return $error;
+			}
+		}
+
+
+	}
+
+
+
 
 
 

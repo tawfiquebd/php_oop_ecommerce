@@ -6,15 +6,28 @@
         <section class="htc__contact__area ptb--100 bg__white">
             <div class="container">
                 <div class="row">
+                <!-- Customer login process -->
+
+                <?php
+                    if (isset($_POST['login']) ) {
+                        $custLogin = $customerObj->customerLogin($_POST);
+
+                        // echo "<pre>";
+                        // echo print_r($custLogin);
+                        // echo "</pre>";
+                    }
+                ?>
 					<div class="col-md-6">
 						<div class="contact-form-wrap mt--60">
 							<div class="col-xs-12">
 								<div class="contact-title">
+                                    <?php if(isset($custLogin)){echo $custLogin;} ?>  
+                                    <br>
 									<h2 class="title__line--6">Login</h2>
 								</div>
 							</div>
 							<div class="col-xs-12">
-								<form id="contact-form" action="#" method="post">
+								<form id="contact-form" action="login.php" method="post">
 									<div class="single-contact-form">
 										<div class="contact-box name">
 											<input type="email" name="email" placeholder="Your Email*" style="width:100%">
@@ -27,12 +40,9 @@
 									</div>
 									
 									<div class="contact-btn">
-										<button type="submit" name="login" class="fv-btn">Login</button>
+                                        <input type="submit" value="Login" name="login" class="fv-btn" />
 									</div>
 								</form>
-								<div class="form-output">
-									<p class="form-messege"></p>
-								</div>
 							</div>
 						</div> 
                 
@@ -42,7 +52,7 @@
 				<!-- Customer registration process -->
 
                 <?php
-                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
+                    if (isset($_POST['register'])) {
                         $customerReg = $customerObj->customerRegistration($_POST);
                     }
                 ?>
