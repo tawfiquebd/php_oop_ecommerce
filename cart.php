@@ -156,7 +156,7 @@
                                             <a href="index.php">Continue Shopping</a>
                                         </div>
                                         <div class="buttons-cart checkout--btn">
-                                            <a href="#">checkout</a>
+                                            <a href="checkout.php">checkout</a>
                                         </div>
                                     </div>
                                      <?php 

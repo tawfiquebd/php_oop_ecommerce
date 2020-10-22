@@ -32,7 +32,7 @@
                                     <?php if(isset($custLogin)){echo $custLogin;} ?>  
                                     <br>
 									<h2 class="title__line--6">Login</h2>
-								</div>
+								</div> 
 							</div>
 							<div class="col-xs-12">
 								<form id="contact-form" action="login.php" method="post">

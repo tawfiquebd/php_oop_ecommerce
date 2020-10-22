@@ -2811,10 +2811,11 @@ a.shipping-calculator-button:hover{
 .contact-box input {
     background: #f5f5f5 none repeat scroll 0 0;
     border: 0 none;
-    color: #666666;
+    color: #000;
     font-size: 16px;
-    height: 62px;
+    height: 45px;
     padding: 0 47px;
+    font-weight: bold;
 }
 .single-contact-form + .single-contact-form {
     margin-top: 30px;

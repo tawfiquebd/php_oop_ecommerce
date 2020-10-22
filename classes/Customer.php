@@ -112,6 +112,62 @@ class Customer{
 
 
 
+	// Customer profile info 
+
+	public function getCustomerInfo($id){
+		$query = "SELECT * FROM tbl_customers WHERE id = '$id' LIMIT 1";
+		$getData = $this->db->select($query);
+		return $getData;
+	}
+
+
+
+	// Update customer profile information
+
+	public function updateCustomerInfo($customer_data, $customerId){
+
+		$name = $this->fmt->validation($customer_data['name']);
+		$gender = $this->fmt->validation($customer_data['gender']);
+		// $email = $this->fmt->validation($customer_data['email']);
+		// $password = $this->fmt->validation($customer_data['password']);
+		$contact = $this->fmt->validation($customer_data['contact']);
+		$address = $this->fmt->validation($customer_data['address']);
+		$city = $this->fmt->validation($customer_data['city']);
+		$zip = $this->fmt->validation($customer_data['zip']);
+		$country = $this->fmt->validation($customer_data['country']);
+
+		$customerId = $this->db->link->real_escape_string($customerId);		
+		$name = $this->db->link->real_escape_string($customer_data['name']);
+		$gender = $this->db->link->real_escape_string($customer_data['gender']);
+		// $email = $this->db->link->real_escape_string($customer_data['email']);
+		// $password = $this->db->link->real_escape_string($customer_data['password']);
+		$contact = $this->db->link->real_escape_string($customer_data['contact']);
+		$address = $this->db->link->real_escape_string($customer_data['address']);
+		$city = $this->db->link->real_escape_string($customer_data['city']);
+		$zip = $this->db->link->real_escape_string($customer_data['zip']);
+		$country = $this->db->link->real_escape_string($customer_data['country']);
+
+		if(empty($name) || empty($gender) || empty($contact) || empty($address) || empty($city) || empty($zip) || empty($country)){
+			$error = "<span class='error'> Fields must not be empty</span>";
+			return $error;
+		}
+		else{
+			$query = "UPDATE tbl_customers SET name = '$name' , gender = '$gender' , contact = '$contact' , address = '$address' , city = '$city' , zip ='$zip', country = '$country' WHERE id = '$customerId' " ;
+
+	        $update_rows = $this->db->update($query);
+	        if ($update_rows) {
+	         	$success = "<span class='success'>Profile Updated Successfully!</span>";
+	         	return $success;
+	        }
+	        else{
+	            $error = "<span class='error'>Profile Update Failed!</span>";
+	            return $error;
+	        }
+			
+		}
+
+
+	}
 
 
 
