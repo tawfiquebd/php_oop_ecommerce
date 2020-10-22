@@ -1,5 +1,12 @@
 <?php include_once 'inc/header.php' ;?>
 
+<?php 
+	$logger = Session::get('customerLogin');
+    if($logger == false){
+        echo "<script>window.location = 'login.php';</script>";
+    }
+?>
+
 <?php $customerId = Session::get('customerId');?>
 
 		<div class="cart-main-area ptb--100 bg__white">

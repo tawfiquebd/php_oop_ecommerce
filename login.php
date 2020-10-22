@@ -4,7 +4,7 @@
         <?php
             $logger = Session::get("customerLogin");
             if($logger == true){
-                echo "<script>window.location = 'order.php' ;</script>";
+                echo "<script>window.location = 'index.php' ;</script>";
             }
         ?>
 

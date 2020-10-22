@@ -99,7 +99,7 @@ class Customer{
 				Session::set("customerId", $result['id']);
 				Session::set("customerName", $result['name']);
 				Session::set("customerEmail", $result['email']);
-				echo "<script>window.location = 'order.php' ;</script>";
+				echo "<script>window.location = 'index.php' ;</script>";
 			}
 			else{
 				$error = "<span class='error'> Email or Password does not match! </span>";
