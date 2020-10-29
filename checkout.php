@@ -1,10 +1,20 @@
 <?php include_once 'inc/header.php' ;?>
 
 <?php
+    $customerId = Session::get('customerId');
     $logger = Session::get("customerLogin");
     if($logger == false){
         echo "<script>window.location = 'login.php';</script>";
     }
+?>
+
+<?php
+    
+    $getCartData = $cartObj->getCartInfo();
+    if($getCartData != true){
+        echo "<script>window.location = 'cart.php';</script>";
+    }
+
 ?>
 
         <!-- Start Bradcaump area -->
@@ -37,49 +47,62 @@
                                     <div class="accordion__title">
                                         Address Information
                                     </div>
+                                <?php
+                                    $getCustomerInfo = $customerObj->getCustomerInfo($customerId);
+                                    if($getCustomerInfo){
+                                        while ($row = $getCustomerInfo->fetch_assoc()) { ?> 
+                                        
                                     <div class="accordion__body">
                                         <div class="bilinfo">
                                             <form action="#">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="single-input">
-                                                            <input type="text" placeholder="First name">
+                                                            <label >Full Name</label>
+                                                            <input type="text" value="<?php echo $row['name'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="single-input">
-                                                            <input type="text" placeholder="Street Address">
+                                                            <label >Address </label>
+                                                            <input type="text" value="<?php echo $row['address'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="single-input">
-                                                            <input type="text" placeholder="Apartment/Block/House (optional)">
+                                                            <label >City </label>
+                                                            <input type="text" value="<?php echo $row['city'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="single-input">
-                                                            <input type="text" placeholder="City/State">
+                                                            <label >Zip </label>
+                                                            <input type="text" value="<?php echo $row['zip'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="single-input">
-                                                            <input type="text" placeholder="Post code/ zip">
+                                                            <label >Phone </label>
+                                                            <input type="text" value="<?php echo $row['contact'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="single-input">
-                                                            <input type="email" placeholder="Email address">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="single-input">
-                                                            <input type="text" placeholder="Phone number">
+                                                            <label >Country </label>
+                                                            <input type="text" value="<?php echo $row['country'] ;?>">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
+
+                                    <?php
+
+                                        }
+                                    }
+
+                                    ?>
                                     <div class="accordion__title">
                                         payment information
                                     </div>

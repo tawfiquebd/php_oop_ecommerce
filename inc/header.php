@@ -124,8 +124,18 @@
                                             </li>
                                         <li class="drop"><a href="#">Pages</a>
                                             <ul class="dropdown">
+                                                <?php
+
+                                                $getCartData = $cartObj->getCartInfo();
+                                                if($getCartData){ ?> 
+
+                                                
                                                 <li><a href="cart.php">Cart</a></li>
                                                 <li><a href="checkout.php">Checkout</a></li>
+
+                                                <?php
+                                                    }
+                                                ?>
                                                 <li><a href="wishlist.php">Wishlist</a></li>
                                             </ul>
                                         </li>
