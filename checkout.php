@@ -55,7 +55,7 @@
                             <div class="accordion-list">
                                 <div class="accordion">                                    
                                     <div class="accordion__title">
-                                        Address Information
+                                        Product Shipping Address Information
                                     </div>
                                 <!-- Get customer profile data -->
                                 <?php
@@ -128,19 +128,7 @@
                                     }
 
                                     ?>
-                                    <div class="accordion__title">
-                                        payment information
-                                    </div>
-                                    <div class="accordion__body">
-                                        <div class="paymentinfo">
-                                            <div class="single-method">
-                                                <a href="#"><i class="zmdi zmdi-long-arrow-right"></i>Check/ Money Order</a>
-                                            </div>
-                                            <div class="single-method">
-                                                <a href="#" class="paymentinfo-credit-trigger"><i class="zmdi zmdi-long-arrow-right"></i>Credit Card</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
