@@ -44,7 +44,7 @@
                 		<div class="row">
 	                		<div class="col-sm-4 col-sm-offset-4">
 	                			<div class="form-group">
-	                				<a href="checkout.php" class="btn btn-lg btn-primary">Offline Payment</a>
+	                				<a href="checkout.php?offline_payment=process" class="btn btn-lg btn-primary">Offline Payment</a>
 
 	                				<a href="#" class="btn btn-lg btn-warning">Online Payment</a>
 	                			</div>

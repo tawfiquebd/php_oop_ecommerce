@@ -7,6 +7,12 @@
         echo "<script>window.location = 'login.php';</script>";
     }
 ?>
+<?php
+    if (!isset($_GET['offline_payment']) || $_GET['offline_payment'] == NULL) {
+        echo "<script>window.location = 'cart.php';</script>";
+    }
+
+?>
 
 <?php
     // Update profile process
@@ -175,6 +181,9 @@
                             <div class="ordre-details__total">
                                 <h5>Order total</h5>
                                 <span class="price">$918.00</span>
+                            </div>
+                            <div class="ordre-details__total">                                
+                                <button class="btn btn-lg btn-block btn-success">Confirm Order</button>
                             </div>
                         </div>
                     </div>
