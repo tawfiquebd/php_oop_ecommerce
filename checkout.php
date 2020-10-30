@@ -9,7 +9,17 @@
 ?>
 
 <?php
-    
+    // Update profile process
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
+        $getData = $_POST;
+        $profileUpdate = $customerObj->updateCustomerInfo($getData, $customerId);
+    }
+
+?>
+
+<?php
+    // Get cart info
     $getCartData = $cartObj->getCartInfo();
     if($getCartData != true){
         echo "<script>window.location = 'cart.php';</script>";
@@ -40,56 +50,71 @@
         <div class="checkout-wrap ptb--100">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="checkout__inner">
                             <div class="accordion-list">
                                 <div class="accordion">                                    
                                     <div class="accordion__title">
                                         Address Information
                                     </div>
+                                <!-- Get customer profile data -->
                                 <?php
                                     $getCustomerInfo = $customerObj->getCustomerInfo($customerId);
                                     if($getCustomerInfo){
                                         while ($row = $getCustomerInfo->fetch_assoc()) { ?> 
                                         
                                     <div class="accordion__body">
-                                        <div class="bilinfo">
-                                            <form action="#">
+                                        <div class="bilinfo">                                            
+                                            <form action="#" method="post">
                                                 <div class="row">
                                                     <div class="col-md-12">
+                                                        <?php if(isset($profileUpdate)){echo $profileUpdate;} ?>
                                                         <div class="single-input">
                                                             <label >Full Name</label>
-                                                            <input type="text" value="<?php echo $row['name'] ;?>">
+                                                            <input type="text" name="name" value="<?php echo $row['name'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="single-input">
                                                             <label >Address </label>
-                                                            <input type="text" value="<?php echo $row['address'] ;?>">
+                                                            <input type="text" name="address" value="<?php echo $row['address'] ;?>">
                                                         </div>
                                                     </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="contact-box">
+                                                            <input type="hidden" name="gender" value="<?php echo $row['gender'] ;?>">
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-12">
                                                         <div class="single-input">
                                                             <label >City </label>
-                                                            <input type="text" value="<?php echo $row['city'] ;?>">
+                                                            <input type="text" name="city" value="<?php echo $row['city'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="single-input">
                                                             <label >Zip </label>
-                                                            <input type="text" value="<?php echo $row['zip'] ;?>">
+                                                            <input type="text" name="zip" value="<?php echo $row['zip'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="single-input">
                                                             <label >Phone </label>
-                                                            <input type="text" value="<?php echo $row['contact'] ;?>">
+                                                            <input type="text" name="contact" value="<?php echo $row['contact'] ;?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="single-input">
                                                             <label >Country </label>
-                                                            <input type="text" value="<?php echo $row['country'] ;?>">
+                                                            <input type="text" name="country" value="<?php echo $row['country'] ;?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="single-input">
+                                                            <br>
+                                                            <input type="submit" name="update" value="Update" class="btn btn-info">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +145,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="order-details">
                             <h5 class="order-details__title">Your Order</h5>
                             <div class="order-details__item">

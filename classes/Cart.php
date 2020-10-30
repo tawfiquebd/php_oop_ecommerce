@@ -10,6 +10,7 @@ class Cart{
 	
 	private $db;
 	private $fmt;
+	private $user;
 
 	public function __construct(){
 
@@ -19,13 +20,19 @@ class Cart{
 	}
 
 
+	// Get logged user info
+	public function getLoggedUserInfo(){
+		$loggedCustomer = Session::get("customerId");
+	}
+
+
 	// Add to cart product
 
 	public function addToCart($quantity, $id){
 		$quantity = $this->fmt->validation($quantity);
 		$quantity = $this->db->link->real_escape_string($quantity);
 		$productId = $this->db->link->real_escape_string($id);
-		$sessionId = session_id();
+		$sessionId = session_id().Session::get("customerId");
 
 		// Get product by id
 		$selectQuery = "SELECT * FROM tbl_products WHERE id = '$productId' ";
@@ -62,7 +69,7 @@ class Cart{
 
 	// Get all cart data 
 	public function getCartData(){
-		$sessionId = session_id();
+		$sessionId = session_id().Session::get("customerId");
 		$selectQuery = "SELECT * FROM tbl_carts WHERE sessionId = '$sessionId' ";
 		$getProducts = $this->db->select($selectQuery);
 		return $getProducts;
@@ -118,7 +125,7 @@ class Cart{
 
 	// Get cart info for header
 	public function getCartInfo(){
-		$sessionId = session_id();
+		$sessionId = session_id().Session::get("customerId");
 		$selectQuery = "SELECT * FROM tbl_carts WHERE sessionId = '$sessionId' ";
 		$getCartInfo = $this->db->select($selectQuery);
 		return $getCartInfo;

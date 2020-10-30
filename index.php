@@ -1,5 +1,11 @@
 <?php include_once 'inc/header.php' ;?>
 <?php include_once 'inc/slider.php' ;?>
+<?php
+    // echo "<pre>";
+    // print_r(Session::get("custSessionId"));
+    // echo "</pre>";
+    // exit();
+?>
 
         <!-- Start Category Area -->
         <section class="htc__category__area ptb--100">

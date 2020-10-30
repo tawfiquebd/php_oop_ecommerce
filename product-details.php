@@ -8,6 +8,7 @@
         $product_id = $_GET['product_id'];
     }
 
+    // Add to cart 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $quantity = $_POST['quantity'];
         $addCart = $cartObj->addToCart($quantity, $product_id);

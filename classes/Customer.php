@@ -95,6 +95,7 @@ class Customer{
 			$getResult = $this->db->select($query);
 			if($getResult){
 				$result = $getResult->fetch_assoc();
+				// Session::set("custSessionId", session_id().$result['id']);
 				Session::set("customerLogin", true);
 				Session::set("customerId", $result['id']);
 				Session::set("customerName", $result['name']);
@@ -147,7 +148,7 @@ class Customer{
 		$zip = $this->db->link->real_escape_string($customer_data['zip']);
 		$country = $this->db->link->real_escape_string($customer_data['country']);
 
-		if(empty($name) || empty($gender) || empty($contact) || empty($address) || empty($city) || empty($zip) || empty($country)){
+		if(empty($name) || empty($contact) || empty($address) || empty($city) || empty($zip) || empty($country)){
 			$error = "<span class='error'> Fields must not be empty</span>";
 			return $error;
 		}

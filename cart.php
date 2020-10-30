@@ -87,7 +87,7 @@
                                             <td class="product-quantity">
                                                 <form action="cart.php" method="POST">
                                                     <input type="hidden" name="cartId" value="<?php echo $value['cartId'] ;?>" />
-                                                    <input required="" type="number" name="quantity"  value="<?php echo $value['quantity'] ;?>" />
+                                                    <input required="" type="number" min="1" name="quantity"  value="<?php echo $value['quantity'] ;?>" />
                                                     <button type="submit" name="update" class="btn btn-warning">Update</button>
                                                 </form>
                                             </td>
